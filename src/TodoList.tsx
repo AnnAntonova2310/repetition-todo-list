@@ -21,6 +21,10 @@ export function TodoList(props: todoListType) {
     const onChangeInputHandler=(e: ChangeEvent<HTMLInputElement>)=> {
         setValue(e.currentTarget.value)
     }
+    const addTask=()=> {
+        props.addTask(value)
+        setValue('')
+    }
     return (
 
         <div className="App">
@@ -28,7 +32,7 @@ export function TodoList(props: todoListType) {
                 <h3>{props.title}</h3>
                 <div>
                     <input onChange={(e)=>{onChangeInputHandler(e)}} value={value}/>
-                    <button onClick={()=>props.addTask(value)}>+</button>
+                    <button onClick={addTask}>+</button>
                 </div>
                 <ul>
                     {props.tasks.map((task) => {
