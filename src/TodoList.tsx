@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent,KeyboardEvent, useState} from "react";
 import {filterType} from "./App";
 import {log} from "util";
 
@@ -31,7 +31,15 @@ export function TodoList(props: todoListType) {
             <div>
                 <h3>{props.title}</h3>
                 <div>
-                    <input onChange={(e)=>{onChangeInputHandler(e)}} value={value}/>
+                    <input
+                        onChange={(e)=>{onChangeInputHandler(e)}}
+                        value={value}
+                        onKeyPress={(e: KeyboardEvent<HTMLInputElement>)=>{
+                            if(e.key==='Enter'){
+                                addTask()
+                            }
+                        }}
+                    />
                     <button onClick={addTask}>+</button>
                 </div>
                 <ul>
