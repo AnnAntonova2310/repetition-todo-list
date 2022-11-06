@@ -5,12 +5,13 @@ import {log} from "util";
 type todoListType = {
     title: string
     tasks: Array<taskType>
-    removeTask: (taskId: number) => void
+    removeTask: (taskId: string) => void
     changeFilter: (value: filterType) => void
+    addTask: () => void
 }
 
 type taskType = {
-    id: number
+    id: string
     title: string
     isDone: boolean
 }
@@ -22,7 +23,7 @@ export function TodoList(props: todoListType) {
                 <h3>{props.title}</h3>
                 <div>
                     <input/>
-                    <button>+</button>
+                    <button onClick={props.addTask}>+</button>
                 </div>
                 <ul>
                     {props.tasks.map((task) => {
